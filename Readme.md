@@ -15,7 +15,10 @@
     queue.add(data);
 
     // remove data from queue
-    queue.remove(data);
+    queue.remove();
+
+    // size of queue
+    queue.size();
 
 
 ```
