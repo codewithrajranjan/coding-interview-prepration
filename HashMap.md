@@ -29,9 +29,9 @@
     hm.size() // return size of hash in integer value
 
     // getting values of key
-    hm.keySet() // this will return a set containing the value of keys
+    hm.keySet() // this will return a list containing the value of keys
 
-    // getting value of hashmap values
+    // getting value of hashmap values returns a list
     hm.entrySet()
 
 

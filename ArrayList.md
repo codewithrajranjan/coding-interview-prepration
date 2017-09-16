@@ -29,6 +29,10 @@
     for(Integer i : al){
         System.out.println(i);
     }
+
+    // sorting array list
+    Collections.sort(al);
+    Collections.reverse(al);
     
 
 

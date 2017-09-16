@@ -38,3 +38,10 @@
 
 ### Level order traversal
 * printing each level one by one for the tree
+
+
+### Vertical Traversal
+
+* This is used to print the tree in vertical order. Multiple vertical lines are drawn and numbers are printed in that order.
+* We use a hash map which stores the value of x in hashmap as keys and the value of x at root node is zero and for every left tree traversal x is reduced by 1 and for every right tree traversal it is increased by 1.
+
