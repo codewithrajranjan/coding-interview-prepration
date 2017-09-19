@@ -6,6 +6,9 @@
 * visit the root node
 * visit the right tree
 
+
+* After writing full in order traversal the root is printed in the middle
+
 #### Uses of In-order traversal
 
 * inorder traversal of binary search tree gives nodes in non-decreasing order
@@ -16,6 +19,9 @@
 * visit root node 
 * visit left tree
 * visit right tree
+
+
+* After writing full pre order traversal the root will come at the leftmost
 
 #### Uses of preorder
 
@@ -28,6 +34,9 @@
 * visit left tree
 * visit right tree
 * visit root node
+
+* After writing full post order traversal the root will come at last or the right most
+
 
 #### Uses of post order traversal
 

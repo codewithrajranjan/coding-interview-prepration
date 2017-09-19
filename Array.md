@@ -4,7 +4,7 @@
 ```java
 
     // size or length of array
-    arr.length()
+    arr.length
 
     // Printing an array 
     Arrays.toString(arr)
