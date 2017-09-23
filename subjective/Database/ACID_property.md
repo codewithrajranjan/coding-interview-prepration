@@ -1,7 +1,8 @@
 ## ACID Property in DATABASE
 
 
-    A transaction is a very small unit of a program and it may contain several lowlevel tasks. A transaction in a database system must maintain Atomicity, Consistency, Isolation, and Durability − commonly known as ACID properties − in order to ensure accuracy, completeness, and data integrity.
+    > A transaction is a very small unit of a program and it may contain several lowlevel tasks. 
+    > A transaction in a database system must maintain Atomicity, Consistency, Isolation, and Durability − commonly known as ACID properties − in order to ensure accuracy, completeness, and data integrity.
 
    - Atomicity: In a transaction involving two or more discrete pieces of information, either all of the pieces are committed or none are.
 
