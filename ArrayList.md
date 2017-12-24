@@ -19,6 +19,12 @@
     // get element at particular index
     al.get(index);
 
+    // adding data at a particular index
+    al.add(index,value);
+
+    // Defining array of Array List
+    ArrayList<ArrayList<Integer>> container = new ArrayList<ArrayList<Integer>>();
+
 
     // Iterating over array list
     for(int i=0;i<al.size();i++){
