@@ -91,7 +91,18 @@
 - so the network mask for
     - class A = 255.0.0.0
     - calss B = 255.255.0.0
-    - class C = 255.255.255.0
+    - class C = 255.255.255.0 
+
+- if you are using subnet then your office network has only one ip address that is visible to public router and this ip address will be strored in the external router tables. but that network is divided into smaller sub networks using subneeting
+
+
+## VLSM - variable lenght subnet mask
+
+- using the classical approach the network can be applied a single subnet mask
+- but using vlsm multiple mask can be applied to same network
+- can have subnets of different sizes
+- better utilization of address space
+
 
 
 

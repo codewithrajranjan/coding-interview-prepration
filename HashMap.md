@@ -34,5 +34,24 @@
     // getting value of hashmap values returns a list
     hm.entrySet()
 
+    // iteration of hashmap
+    Map<String, Object> map = ...;
+    // iterating through keyset
+    for (String key : map.keySet()) {
+        // ...
+    }
+
+    // iteration over values
+    for (Object value : map.values()) {
+    // ...
+    }
+    // iteration over both key and value
+    for (Map.Entry<String, Object> entry : map.entrySet()) {
+    String key = entry.getKey();
+    Object value = entry.getValue();
+    // ...
+    }
+    
+
 
 ```
