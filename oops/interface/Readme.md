@@ -86,6 +86,81 @@
   - strictfp
   - native
 
+- If two interface has a method with same signature and same return type then in the implementation class we have to provide implementation for only one method
+
+```java
+
+   interface Left{
+     public void m1();
+   }
+
+   interface rightK{
+     public void m1();
+   }
+
+   class Test implements Left, Right{
+
+     // note here the interface left and right both contains same method m1
+     @override
+     public void m1(){
+
+     }
+   }
+```
+
+- If two interface contains a method with same name and same return type but with different arguments then implementation class needs to provide implementation for both the methods. This is a case of **Overloaded methods**
+
+```java
+
+   interface Left{
+     public void m1();
+   }
+
+   interface rightK{
+     public void m1(int number);
+   }
+
+   class Test implements Left, Right{
+
+     // note even though the mehtodh name is same but implmentation of both the method is provided
+     @override
+     public void m1(){
+
+     }
+     @override
+     public void m1(int number){
+
+     }
+   }
+```
+
+- If two interfaces contains a method with same name but different return type then it is impossible to implement both the interfaces simultaneously
+
+```java
+
+    interface Left{
+      public void m1();
+    }
+
+    interface Right{
+      public int m1();
+    }
+
+    // Note this implementation is not correct
+    class Test implements Left, Right{
+
+      @override
+      public void m1(){
+
+      }
+      // Wrong same method can't have same return type
+      @override int m1(){
+
+      }
+
+    }
+
+```
 
 ## What is the need of having variables in Interface
 
@@ -116,14 +191,71 @@
     }
 
   ```
-- Interface variable can be private or protected
+- Interface variable can't be private or protected
 - Every interface variable is always public static final so we can't declare following types
   - private
   - protected
   - transient
   - volatile
+- since the interface variable is final and static so we need to initialize it.
+  - The initialization of static final variable can be done in static block or during declaration
+  - As interface doesn't have a static variable so  we need to initialize it during declaration
+- In interface the initialization of variable is mandatory
 
-- 
+```java
+
+  interface interf{
+    // declaration and initialization
+    int x = 10;
+  }
+
+```
+
+- Once a variable has been declared in an interface then its value can't be changed
+- Two interface can have a variable with same name but when we access that variable in the class then we need to access it by referring the interface name
+
+```java
+
+  interface Left{
+    int x = 10;
+  }
+  interface Right{
+    int x = 10;
+  }
+
+  class Test implements Left, Right{
+    // if we acess the variable with name then it will be wrong
+    System.out.println(x); // wrong
+
+    // but we can acess them by their interface name
+    Sytem.out.println(Left.x);
+    System.out.println(Right.x);
+  }
+
+```
+
+## Marker Interface
+
+- If the interface doesn't contain any method and by implementing that interface the class gets some special ability then that interface is called marker interface like serializable, cloneable, random access, single thread model
+- Serializable interface : By implementing the serializable interface our objects can be saved to a file and can travel across network
+- Cloneable interface : By implementing the cloneable interface our objects gets special ability to produce exactly duplicate objects
+- Even if the marker interface doesn't have a method but the objects gets special ability because it the work of JVM to provide the special functionality
+
+## Why JVM is providing the special functionality using marker interface
+
+- Its the responsibility to JVM to provide the special functionality in order to reduce complexity and make java as simple as possible. suppose for serialization process we don't need to bother about how the object is saved on the disk or transferred over the network
+
+## Is it possible to create our own marker interface
+
+Yes it is possible to cerate our own marker interface but for that we need to provide the corresponding implementation in the JVM which means we need to customize the JVM for understanding our own marker interface
+
+
+
+
+
+
+
+
 
 
 
