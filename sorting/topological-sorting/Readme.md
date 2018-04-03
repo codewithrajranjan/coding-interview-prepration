@@ -11,3 +11,7 @@
 - apt-get or yum 
 - task scheduling : Topological sort is helpful in scheduling inter dependent task
 - pre-requisite problems : like university structure that to take some course we have complete certain set of courses before. this can be achieved by applying topological sort on all the available courses
+
+
+
+
