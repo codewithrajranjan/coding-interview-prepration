@@ -8,4 +8,5 @@ It's easy to find the LCA in BST
 
 ## Check if a tree is BST or not
 
-Do a pre order traversal of the tree and check that the output is sorted in ascending order. If yes then the tree is sorted.
+- Do a in order traversal of the tree and store the node data in an arraylist
+- if the array list is sorted and ascending then the given tree is BST 
