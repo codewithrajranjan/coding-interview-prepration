@@ -50,9 +50,13 @@
 
 
 
+## How facebook find friends using graph
+
+You can find the immediate friends of friends using simple path algorithm. so if you are asked to suggest freinds of a friends then you can simply find the nodes which are at distance of two from the current node
 
 
 
+## Web crawling is bascially a graph traversal algorithm
 
 
 
