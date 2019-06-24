@@ -28,35 +28,32 @@
 - Acyclic : Graph which has node cycle
 
 
-## Representation of Graph
 
-- A graph can be represented in different ways. The two most important ways in which graph can be represented is
-  - Adjacency Matrix
-  - Adjacency List
 
-## Adjacency Matrix
 
-- The graph is represented using two dimensional array
-- If the number of node is n then a two dimensional array of size n X n is taken
-- Row represents the node itself
-- Col represent the other nodes to which the node represented by row can have edges
-- Each cell can have an integer value
-  - If the value is 0 then there is node edge between two nodes
-  - If the value is 1 then there is edge between the two node
-  - If the value is other than 1 then there is a edge and the weight of the edge is represented by the value
-- If the graph is undirected then for edge A to B we represent matrix[A][B] = 1 and matrix[B][A] = 1
+## Shortest Path if all the edges have same weight(VVI)
+
+- if all the path has same edge then we don't need to apply Dijkstra algorithm because it's complexity will be O(V+ELogV)
+- we can simply solve it using the bfs because when weight of the edge are same so if we are moving from the current vertex to any other connected vertexthe value added to the path will be equal. and also we are moving level by level so the whenever we reach the destination vertex we will stop the bfs. The complexity of BFS will be O(V+E) which is less than Dijkstra in this case
+
+
+
+##  Given a directed weighted graph. You are also given the shortest path from a source vertex ‘s’ to a destination vertex ‘t’.  If weight of every edge is increased by 10 units, does the shortest path remain same in the modified graph?
 
 
 
 
-
-## How facebook find friends using graph
-
-You can find the immediate friends of friends using simple path algorithm. so if you are asked to suggest freinds of a friends then you can simply find the nodes which are at distance of two from the current node
+### Does the shortest path change when weights of all edges are multiplied by 10?
 
 
 
-## Web crawling is bascially a graph traversal algorithm
+
+### Given a directed graph where every edge has weight as either 1 or 2, find the shortest path from a given source vertex ‘s’ to a given destination vertex ‘t’. Expected time complexity is O(V+E).
+
+
+
+
+### Given a directed acyclic weighted graph, how to find the shortest path from a source s to a destination t in O(V+E) time?
 
 
 
@@ -64,20 +61,12 @@ You can find the immediate friends of friends using simple path algorithm. so if
 
 
 
+### Snake and Ladder Game : minimum number of throws to end the game
 
+- the snake and ladder board can be converted into a graph
+- if you are at vertex v then you can move to v+1, v+2, v+3, v+4, v+5, v+6  but you need to check that if any place in a ladder or snake then you need to create the graph in that same way
 
-
-
-
-
-
-
-
-
-
-
-
-
+- and then when we throw a dice then we move from one vertex to another and each vertex is having same weight so we know that if in a graph we have same weight for all the edges then minimum path can be calculated using breadth first search
 
 
 

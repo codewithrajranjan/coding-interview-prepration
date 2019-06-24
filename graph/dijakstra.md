@@ -14,6 +14,7 @@
 - Dijkastra algorithm can't be applied on graph having negative weights
 - the number of iteration involved in Bellman Ford Algorithm is more than that of  Dijkstra algorithm
 - Dijkstra algorithm is perfect example of greedy algorithm
+- Dijkstra doesn't work with negative weights because once we make a vertex permanent then we don't relabel that vertex
 
 
 
@@ -43,7 +44,120 @@
 
 7 Repeat the above algo until all the pathdistance is not equal to infinity or all the vertex status becomes permanent
 
+```java
 
+package selftuts;
+// Djikstras Algorithm
+// graph has been taken form here  https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-greedy-algo-7/
+
+
+
+// simple dijkstra algorithm 
+
+class Selftuts{
+
+	public static void main(String[] args) {
+		Graph g = new Graph();
+		g.dijkstra(0);
+	}
+}
+
+
+
+class Graph {
+	
+	// creating graph using adjacency matrix
+	int[][]  graph =  {
+			{0, 4, 0, 0, 0, 0, 0, 8, 0}, 
+            {4, 0, 8, 0, 0, 0, 0, 11, 0}, 
+            {0, 8, 0, 7, 0, 4, 0, 0, 2}, 
+            {0, 0, 7, 0, 9, 14, 0, 0, 0}, 
+            {0, 0, 0, 9, 0, 10, 0, 0, 0}, 
+            {0, 0, 4, 14, 10, 0, 2, 0, 0}, 
+            {0, 0, 0, 0, 0, 2, 0, 1, 6}, 
+            {8, 11, 0, 0, 0, 0, 1, 0, 7}, 
+            {0, 0, 2, 0, 0, 0, 6, 7, 0} 
+           }; 
+	
+	public void dijkstra(int sourceVertex) {
+		
+		
+		// total vertex in graph
+		int totalVertex = this.graph.length;
+		// so we are having vertex as 0,1,2,3,....,totalVertex-1
+		
+		// creating the pathDistanceArray
+		int[] pathDistance = new int[totalVertex];
+		
+		// creating the predecessor array
+		int[] predecessor = new int[totalVertex];
+		
+		
+		// creating the status array
+		boolean[] status = new boolean[totalVertex];
+		
+		
+		// doing the initialization of these arrays
+		for(int i=0;i<totalVertex;i++) {
+			// making the pathDistance as infinite
+			pathDistance[i] = Integer.MAX_VALUE;
+			// making the status of all as temporary
+			status[i] = false;
+			
+			// making the predecessor as nil
+			predecessor[i] = -1;
+		}
+		// making the pathDistance of source vertex as 0
+		pathDistance[sourceVertex] = 0;
+
+		// NOTE : here we are going for intrative approaca because if we go for recursion then the exit condition will be the state when the status of all the vertex is permanent
+		// But if some of the vertex is not connected to the source vertex then we can't make all the vertex as permanent 
+		// so we are running the loop for the total count of totalVertex
+		// we need to run our algo for the count of totalVertex times
+		for(int i=0;i<totalVertex;i++) {
+			// find the vertex with mininumPathDistance
+			int miniumumPathDistanceVertex = this.findMinimumPathDistanceAndTemproaryVertex(status, pathDistance);
+			// making the vertex permanent
+			status[miniumumPathDistanceVertex] = true;
+			// finding all the connected nodes 
+			for(int j=0;j<totalVertex;j++) {
+				if(this.graph[miniumumPathDistanceVertex][j]>0) {
+					int weight = this.graph[miniumumPathDistanceVertex][j];
+					int pathDistanceOfCurrentMinimumVertex = pathDistance[miniumumPathDistanceVertex];
+					int pathDistanceOfConnectedVertex = pathDistance[j];
+					
+					
+					// now the main algorithm
+					if(pathDistanceOfCurrentMinimumVertex+weight < pathDistanceOfConnectedVertex) {
+						pathDistance[j] = pathDistanceOfCurrentMinimumVertex+weight;
+						predecessor[j] = miniumumPathDistanceVertex;
+					}
+				}
+			}
+			
+		}
+		// once it is complted then printing
+		for(int i=0;i<totalVertex;i++) {
+			System.out.println(i+"--"+pathDistance[i]);
+		}
+	}
+	private int findMinimumPathDistanceAndTemproaryVertex(boolean[] status,int[] pathDistance) {
+		int minPathDistance = Integer.MAX_VALUE;
+		int vertexWithMininumPathDistance = -1;
+		int totalVertex = status.length;
+		for(int i=0;i<totalVertex;i++) {
+			if(pathDistance[i]<minPathDistance && status[i]==false) {
+				minPathDistance = pathDistance[i];
+				vertexWithMininumPathDistance = i;
+			}
+		}
+		return vertexWithMininumPathDistance;
+	}
+	
+}
+
+
+```
 
 
 ## Implementation with Priority Queue
