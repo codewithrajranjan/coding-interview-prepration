@@ -69,4 +69,122 @@
 - and then when we throw a dice then we move from one vertex to another and each vertex is having same weight so we know that if in a graph we have same weight for all the edges then minimum path can be calculated using breadth first search
 
 
+```java
+
+package selftuts;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+// minimum number of throws to win snake and ladder game
+// https://practice.geeksforgeeks.org/problems/snake-and-ladder-problem/0
+
+class Selftuts{
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		while(t-->0) {
+			int n = s.nextInt();
+
+			HashMap<Integer,Integer> ladder = new HashMap<Integer,Integer>();
+			HashMap<Integer,Integer> snake = new HashMap<Integer,Integer>();
+		
+			for(int i=0;i<n;i++) {
+				int a = s.nextInt();
+				int b = s.nextInt();
+				if(b>a) {
+					// this means that is a ladder
+					ladder.put(a,b);
+				}else {
+					// this means that sanke is encountered
+					snake.put(a,b);
+				}
+
+			}
+			
+			
+			// now we need to create the graph
+			// note that the node is starting from 1 and ending at 30
+			ArrayList<ArrayList<Integer>> adjList = new ArrayList<ArrayList<Integer>>();
+			adjList.add(0,new ArrayList<Integer>());
+			for(int i=1;i<=30;i++) {
+				// initializing the array list for adjacent nodes
+				adjList.add(i,new ArrayList<Integer>());
+
+				// if the current vertex is v then it is connected to other vertex
+				// v+1,v+2,v+3,v+4,v+5,v+6 provided there is not ladder or snake
+				// if there is ladder or snake then we need to modify the code same way
+				for(int j=1;j<=6;j++) {
+					int nextVertex = i+j;
+					// checking the next vertex is within board range
+					if(nextVertex<=30) {
+						// check if next Vertex is present in ladder
+						if(ladder.containsKey(nextVertex)) {
+							nextVertex = ladder.get(nextVertex);
+						}else if(snake.containsKey(nextVertex)) {
+							nextVertex = snake.get(nextVertex);
+						}
+						adjList.get(i).add(nextVertex);
+					}
+				}
+
+			} // graph creation ends here
+			
+			
+			// now we need to do a bfs for reaching the end of snake and ladder board
+			int[] visitedVertex  = new int[31];
+			Queue<GraphNode> q = new LinkedList<GraphNode>();
+			
+			// adding the first vertex to it
+			q.add(new GraphNode(1,0));
+			GraphNode currentGraphNode = null;
+			// now performing bfs
+			while(q.isEmpty() == false) {
+				// take out the current vertex
+				currentGraphNode= q.remove();
+				int currentVertex = currentGraphNode.vertex;
+
+				// checking if we have reached the end of the snake and ladder
+				if(currentVertex == 30 ) {
+					break;
+				}
+				// mark the current vertex as visited
+				visitedVertex[currentVertex] = 1;
+				
+				// access all the adjacent vertex to this currentVertext
+				ArrayList<Integer> adjacentVertexList = adjList.get(currentVertex);
+				
+				for(int k=0;k<adjacentVertexList.size();k++) {
+					int adjacentVertex = adjacentVertexList.get(k);
+					// if it is not visited then consider for bfs
+
+					if(visitedVertex[adjacentVertex]==0) {
+						q.add(new GraphNode(adjacentVertex,currentGraphNode.distance+1));
+					}
+				}
+			} // end of while
+
+			System.out.println(currentGraphNode.distance);
+		}
+	}
+}
+
+
+class GraphNode{
+	int vertex;
+	int distance;
+	public GraphNode(int vertex,int distance) {
+		this.vertex = vertex;
+		this.distance = distance;
+	}
+}
+
+
+```
+
+
 
