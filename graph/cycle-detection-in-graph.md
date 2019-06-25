@@ -150,5 +150,122 @@ class Edge{
 
 
 
+```java
+
+package selftuts;
+
+// check if there is cycle in undirected graph or not
+
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Selftuts{
+
+	public static void main(String[] args) {
+
+		int totalVertex = 12;
+		ArrayList<Edge> edges = new ArrayList<Edge>();
+		edges.add(new Edge(1, 2));
+		edges.add(new Edge(1, 3));
+		edges.add(new Edge(1, 4));
+		edges.add(new Edge(2, 5));
+		edges.add(new Edge(2, 6));
+		edges.add(new Edge(5, 9));
+		edges.add(new Edge(5, 10));
+		edges.add(new Edge(4, 7));
+		edges.add(new Edge(4, 8));
+		edges.add(new Edge(7, 11));
+		edges.add(new Edge(7, 12));
+		edges.add(new Edge(6, 10));
+		
+		Graph g = new Graph(edges, totalVertex);
+		System.out.println(g.checkCycle());
+
+
+	}
+}
+
+class Graph {
+
+	private ArrayList<ArrayList<Integer>> graph;
+	
+	private int totalVertex;
+	
+	public Graph(ArrayList<Edge> edges,int totalVertex) {
+		// note that the vertex is starting from 1 so we are taking the value as totalVertex+1
+		this.totalVertex = totalVertex + 1;
+		this.graph = new ArrayList<ArrayList<Integer>>(this.totalVertex);
+
+		for(int i=0;i<this.totalVertex;i++) {
+			this.graph.add(i,new ArrayList<Integer>());
+		}
+
+		for(int i=0;i<edges.size();i++) {
+			int src = edges.get(i).src;
+			int dest = edges.get(i).dest;
+
+			// adding data to the adjacency list. since it is undirected graph so adding edges vice versa
+			this.graph.get(src).add(dest);
+			this.graph.get(dest).add(src);
+		}
+	}
+	public boolean checkCycle() {
+		int[] visitedVertex = new int[this.totalVertex];
+		int[] parentVertexList = new int[this.totalVertex];
+		parentVertexList[1] = -1;
+		return dfsUtil(1, visitedVertex, parentVertexList);
+	}
+	public boolean dfsUtil(int currentVertex,int[] visitedVertex,int[] parentVertexList) {
+		
+		//mark the vertex as visited 
+		visitedVertex[currentVertex] = 1;
+
+
+		// get all the adjacent node
+		ArrayList<Integer> adjacentList = this.graph.get(currentVertex);
+		
+		for(int i=0;i<adjacentList.size();i++) {
+			int adjacentVertex = adjacentList.get(i);
+			if(visitedVertex[adjacentVertex]==1) {
+
+				// if the vertex has already been visited
+				// then we need to check if it is parent vertex or not
+				// get the parent of current vertex
+				int parentVertex = parentVertexList[currentVertex];
+				System.out.println(currentVertex+"=="+adjacentVertex+"=="+parentVertex);
+				if(parentVertex != adjacentVertex) {
+					// cycle is detected
+					return true;
+				}
+			}else {
+				parentVertexList[adjacentVertex] = currentVertex;
+				if(dfsUtil(adjacentVertex, visitedVertex, parentVertexList)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
+}
+
+class Edge{
+	int src;
+	int dest;
+	public Edge(int src,int dest) {
+		this.src = src;
+		this.dest = dest;
+	}
+}
+
+
+
+
+```
 
 
