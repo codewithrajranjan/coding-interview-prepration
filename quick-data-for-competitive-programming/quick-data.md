@@ -106,3 +106,32 @@ class Tree {
 
 
 ```
+
+> ## Level Order Traversal Code
+
+- This helps to check if the tree was created correctly or not
+
+
+```java
+
+	public void levelOrderTraversal(TreeNode root) {
+		
+		// creating the queue that will hold the node of each level
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		q.add(root);
+		while(q.isEmpty()==false) {
+			TreeNode currentNode = q.remove();
+			System.out.print(currentNode.data+" ");
+			if(currentNode.leftNode!=null) {
+				q.add(currentNode.leftNode);
+			}
+			if(currentNode.rightNode!=null) {
+				q.add(currentNode.rightNode);
+			}
+		}
+
+	}
+
+
+```
+
