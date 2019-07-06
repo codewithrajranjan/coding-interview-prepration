@@ -6,10 +6,21 @@ It's easy to find the LCA in BST
 - if both are smaller move the current node to left tree
 
 
-## Check if a tree is BST or not
+## Check if a tree is BST or not (VVI)
+
+- https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
+- tricky question must see the recuriosn solution
+   - For each node, check if max value in left subtree is smaller than the node and min value in right subtree greater than the node.
+
 
 - Do a in order traversal of the tree and store the node data in an arraylist
 - if the array list is sorted and ascending then the given tree is BST 
+
+
+- 
+
+
+
 
 ## Construct BST from given preorder traversal
 
