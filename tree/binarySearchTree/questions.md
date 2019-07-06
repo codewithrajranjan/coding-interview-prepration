@@ -1,4 +1,4 @@
-## Lowest common ancestor in BST
+> ## Lowest common ancestor in BST
 
 It's easy to find the LCA in BST
 - compare the current node with the two numbers if one is smaller and one is greater then the current node is LCA
