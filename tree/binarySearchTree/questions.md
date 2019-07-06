@@ -7,7 +7,7 @@ It's easy to find the LCA in BST
 - if both are greater move the current node to right tree
 - if both are smaller move the current node to left tree
 
-----
+--------------------------------------------------------------------------------------------------------------
 
 > ## Check if a tree is BST or not (VVI)
 
@@ -23,7 +23,7 @@ It's easy to find the LCA in BST
 - if the array list is sorted and ascending then the given tree is BST 
 
 
-
+-----------------------------------------------------------------------------------------------------------------
 
 > ## Construct BST from given preorder traversal
 
@@ -47,6 +47,9 @@ It's easy to find the LCA in BST
 - stack based solution
 - couldn't understand form the geeks for geeks solution
 
+
+----------------------------------------------------------------------------------------------------------------------------
+
 > ## Binary Tree to Binary Search Tree Conversion. Conversion must be done in such a way that the original structure of tree is maintained
 - make and array and do any tree traversal and put the nodes value in the array
 - sort the array
@@ -56,5 +59,5 @@ It's easy to find the LCA in BST
 
 
 
-
+--------------------------------------------------------------------------------------------------------------------------
 
