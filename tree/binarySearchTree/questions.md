@@ -5,10 +5,14 @@ It's easy to find the LCA in BST
 - if both are greater move the current node to right tree
 - if both are smaller move the current node to left tree
 
+======================================================================================================
 
 ## Check if a tree is BST or not (VVI)
 
-- https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
+- Read Question from here https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
+
+### Solution 1
+
 - tricky question must see the recuriosn solution
    - For each node, check if max value in left subtree is smaller than the node and min value in right subtree greater than the node.
 
