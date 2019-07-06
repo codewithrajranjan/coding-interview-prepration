@@ -5,7 +5,7 @@ It's easy to find the LCA in BST
 - if both are greater move the current node to right tree
 - if both are smaller move the current node to left tree
 
-======================================================================================================
+---------------------------------------------------------------------------------------------------
 
 ## Check if a tree is BST or not (VVI)
 
