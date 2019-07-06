@@ -1,7 +1,6 @@
 > ## **Question:** Lowest common ancestor in BST
 
-## Solution 1
-
+#### Solution 1
 It's easy to find the LCA in BST
 - compare the current node with the two numbers if one is smaller and one is greater then the current node is LCA
 - if both are greater move the current node to right tree
@@ -9,12 +8,11 @@ It's easy to find the LCA in BST
 
 --------------------------------------------------------------------------------------------------------------
 
-> ## **Question:** Check if a tree is BST or not (VVI)
+> #### **Question:** Check if a tree is BST or not (VVI)
 
 - Read Question from here https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
 
 ## Solution 1
-
 - tricky question must see the recuriosn solution
    - For each node, check if max value in left subtree is smaller than the node and min value in right subtree greater than the node.
 
@@ -27,12 +25,12 @@ It's easy to find the LCA in BST
 
 > ## **Question:** Construct BST from given preorder traversal
 
-## Solution 1
+#### Solution 1
 - In preorder traersal the first node is the root node
 - first construct the root node and then loop over the given preorder traversal and insert the nodes one by one
 - complexity O(n^2)
 
-## Solution 2
+#### Solution 2
 - In preorder traversal the first node is the root node
 - recursively constrct tree by taking the first node and then finding the first element that is greater than the current node
 - now the left subtree will be from the rootNode + 1 to one index less than the first greater node
@@ -40,10 +38,10 @@ It's easy to find the LCA in BST
 - this is done recursively
 - complexity O(n^2)
 
-## Solution 3
+#### Solution 3
 - couldn't understand from geeks for geeks solution
 
-## Solution 4
+#### Solution 4
 - stack based solution
 - couldn't understand form the geeks for geeks solution
 
