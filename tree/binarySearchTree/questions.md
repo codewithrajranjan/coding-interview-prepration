@@ -1,4 +1,4 @@
-> ## **Question:** Lowest common ancestor in BST
+> ## Question: Lowest common ancestor in BST
 
 #### Solution 1
 It's easy to find the LCA in BST
@@ -8,11 +8,11 @@ It's easy to find the LCA in BST
 
 --------------------------------------------------------------------------------------------------------------
 
-> #### **Question:** Check if a tree is BST or not (VVI)
+> ## Question: Check if a tree is BST or not (VVI)
 
 - Read Question from here https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/
 
-## Solution 1
+#### Solution 1
 - tricky question must see the recuriosn solution
    - For each node, check if max value in left subtree is smaller than the node and min value in right subtree greater than the node.
 
@@ -23,7 +23,7 @@ It's easy to find the LCA in BST
 
 -----------------------------------------------------------------------------------------------------------------
 
-> ## **Question:** Construct BST from given preorder traversal
+> ## Question: Construct BST from given preorder traversal
 
 #### Solution 1
 - In preorder traersal the first node is the root node
@@ -48,7 +48,9 @@ It's easy to find the LCA in BST
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-> ## **Question:** Binary Tree to Binary Search Tree Conversion. Conversion must be done in such a way that the original structure of tree is maintained
+> ## Question: Binary Tree to Binary Search Tree Conversion. Conversion must be done in such a way that the original structure of tree is maintained
+
+#### Solution 1
 - make and array and do any tree traversal and put the nodes value in the array
 - sort the array
 - do inorder traversal of binary tree and during backtracking in replace the node value with array value
