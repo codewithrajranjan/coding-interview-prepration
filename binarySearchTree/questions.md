@@ -134,6 +134,112 @@ class Tree {
 - this is done recursively
 - complexity O(n^2)
 
+
+```java
+
+package selftuts;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Selftuts{
+
+	public static void main(String[] args) {
+		
+		Tree t = new Tree();
+		int[] preOrderTraversal = {10, 5, 1, 7, 40, 50};
+		t.constructTree(preOrderTraversal, 0, preOrderTraversal.length-1);
+		t.levelOrderTraversal(t.root);
+		
+	}
+}
+class TreeNode {
+	int data;
+	TreeNode leftNode = null;
+	TreeNode rightNode = null;
+	public TreeNode(int data) {
+		this.data = data;
+	}
+}
+
+class Tree {
+	TreeNode root = null;
+	
+	public void constructTree(int[] preorderTraversal,int startIndex,int endIndex) {
+		
+		this.root = this.constructTreeUtil(preorderTraversal, startIndex, endIndex);
+		
+		
+	}
+	public TreeNode constructTreeUtil(int[] preorderTraversal,int startIndex,int endIndex) {
+		// the idea is the the preorder traversal will have the first element at as the root node
+		// so we will take the first element of the preorder traversal and make the node
+		// then we need to find the array part that forms the left subtree and right subtree
+		// we will recursively call the constructTree method
+		
+		// conditions that will stop the recursion
+		// startIndex is greater than the end index
+		if(startIndex>endIndex) {
+			return null;
+		}
+		
+
+		// create the root element
+		int data = preorderTraversal[startIndex];
+		TreeNode root = new TreeNode(data);
+		
+		// now we need to know the index from where we will form the right subtree and left subtree
+		// for that we need to find the first increasing element
+		int firstIncreasingElementIndex = this.firstIncreasingElementIndex(data, preorderTraversal, startIndex+1, endIndex);
+		
+		if(firstIncreasingElementIndex == -1) {
+			// this means there is no right subtree
+			root.leftNode = this.constructTreeUtil(preorderTraversal, startIndex+1, endIndex);
+			root.rightNode = null;
+		}else {
+			root.rightNode = this.constructTreeUtil(preorderTraversal,firstIncreasingElementIndex,endIndex);
+			root.leftNode = this.constructTreeUtil(preorderTraversal, startIndex+1, firstIncreasingElementIndex-1);
+		}
+
+		return root;
+
+
+		
+	}
+	public int firstIncreasingElementIndex(int currentElement,int[] arr,int startIndex,int endIndex) {
+		
+		for(int i=startIndex;i<=endIndex;i++) {
+			if(arr[i]>currentElement) {
+				return i;
+			}
+		}
+		// if no increasing element is found then it means that not right subtree can be formed
+		return -1;
+	}
+	
+	public void levelOrderTraversal(TreeNode root) {
+		
+		// creating the queue that will hold the node of each level
+		Queue<TreeNode> q = new LinkedList<TreeNode>();
+		q.add(root);
+		while(q.isEmpty()==false) {
+			TreeNode currentNode = q.remove();
+			System.out.print(currentNode.data+" ");
+			if(currentNode.leftNode!=null) {
+				q.add(currentNode.leftNode);
+			}
+			if(currentNode.rightNode!=null) {
+				q.add(currentNode.rightNode);
+			}
+		}
+
+	}
+	
+}
+
+
+```
+
 #### Solution 3
 - couldn't understand from geeks for geeks solution
 
