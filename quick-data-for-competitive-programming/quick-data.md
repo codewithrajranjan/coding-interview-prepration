@@ -135,3 +135,46 @@ class Tree {
 
 ```
 
+
+
+> ## Find if number is prime or not
+
+```java
+
+	public static boolean isPrime(int n) { 
+	    // Corner cases 
+	    if (n <= 1) 
+		return false; 
+	    if (n <= 3) 
+		return true; 
+      
+	    // This is checked so that we can skip 
+	    // middle five numbers in below loop 
+	    if (n % 2 == 0 || n % 3 == 0) 
+		return false; 
+      
+	    for (int i = 5; i * i <= n; i = i + 6) 
+		if (n % i == 0 || n % (i + 2) == 0) 
+		    return false; 
+      
+	    return true; 
+	} 
+
+
+```
+
+
+> ## Iterate over the keys of hashmap
+
+
+```java
+
+	    // here the keys are character
+
+	    for (Character c : hm.keySet()) {
+
+            }
+
+```
+
+
