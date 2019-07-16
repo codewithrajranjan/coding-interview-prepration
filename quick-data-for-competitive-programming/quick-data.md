@@ -1,3 +1,11 @@
+> ## ASCII Data
+
+- The ascii value of 
+  - a = 97
+  - z = 122
+  - A = 65
+  - Z = 90
+
 > ## Graph Bootstarpping using Aajacency List in Java
 
 
