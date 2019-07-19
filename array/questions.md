@@ -24,3 +24,8 @@ What is the most number of chunks we could have made?
 
 
 > ## Given an array find triplets whose sum is zero
+
+
+
+
+> ## Kth smallest element in an array
