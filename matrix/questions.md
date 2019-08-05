@@ -21,3 +21,18 @@
 #### solution 3 : O(mLogn)
 
 - in this we perform the binary search on each row for find the index of first instance of 1
+
+
+
+
+
+
+> ##  count all possible path from top left to bottom right in a matrix. The constraint is that you can only move in right or bottom direction
+
+#### Solution 1 : Using the dfs of graph
+
+- In this method we will just do the dfs of the matrix and maintain a count variable that will get increased whenever we find the destination cell
+- The most important thing to note here that during bfs we need to mark the visited node as unvisited when the traversal of that cell is completed because the question says that we need to find all the possible path and not the shortest path
+- the problem of this solution is the time complexity. it is time taking
+
+#### Solution 2 : using dynamic programming
