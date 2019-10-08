@@ -1,0 +1,1 @@
+* camel has an elaborate type-converter mechanism that activates on demand. This is convenient when you need to convert from common types such as java.lang.Integer to java.lang.String or even from java.io.File to java.lang.String. 
