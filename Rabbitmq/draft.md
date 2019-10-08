@@ -58,3 +58,39 @@ services:
 - TODO need to add a diagram
 
 
+
+
+AMQP protocol and rabbit mq
+
+- amqp = advanced messaging queing protocol
+- amqp sits on the application layere. Application layer is the layer with which users interact. It also defines how process to process or application to application communications takes place
+- some other protocol other than AMQP that works on application layer is 
+	- IRC
+	- DNS
+	- FTP
+	- IMAP
+	- SSH
+- AMQP protocol was created with the concept in mind that different application can interact with each other regardless of their internal designs like in which languge they have been written, which database they are using etc
+- Before AMQP also there were messaging protocol but they interoperatabilty was missing. There was simply not a way that one can work with another. you need to write some additional layer like messaging bridge to convert one format to the other
+
+- high quality
+- guranteed message delivery
+- messasge acknowledgements  : Messages from the queues are not dropped or removed until we send a positive acknowledgement from the consumer.
+- AMQP consits of four entities
+	- Broker(server) an application implementing the AMQP protocol. Broker can be thought to consist of below components
+		- Exchange : Part of broker that directly recieves the messages
+		- Queue : Part of broker from where consumers recieves messages
+		- Bindings : Rules from distributing messages from exchange to queues
+	- Message : content of data transferred like payload and message attributes
+	- producer : An applictio that puts messages to the queue via an exchange
+	- consumer : An application that recives messages put by the producer
+
+- Exchange 
+	- Exchange recieves messages from the publisher
+	- It can send the message to one or more queues depending on the type of exchange
+		- Direct
+			- This work on the delivery of message based on the routing keys.
+	    - Fanout
+			- this completely ignores the routing key and delivers the message to all the queues
+		- Topic
+		- Header
